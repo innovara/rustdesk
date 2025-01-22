@@ -1,0 +1,62 @@
+name: Daily Upstream Rebase
+on:
+  schedule:
+  - cron: "0 0 * * *"
+  workflow_dispatch:
+    inputs:
+      upstream:
+        description: <user>/<repo> or the full HTTP URL
+        required: false
+      branch:
+        description: The upstream branch that is rebased on
+        required: false
+        default:  master
+      depth:
+        description: Greater than the number of commits the upstream made in a period
+        required: false
+        default:  100
+      push:
+        description: Do the force push in this action
+        required: false
+        default:  true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 10  # greater than the number of commits you made
+        persist-credentials: false
+    - shell: bash
+      env:
+        WORKFLOW_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+      run: |
+        set -ex;
+
+        UPSTREAM=${{ inputs.upstream }};
+        if [ -z $UPSTREAM ]; then
+            echo $WORKFLOW_TOKEN | gh auth login --with-token;
+            UPSTREAM=$(gh api repos/:owner/:repo --jq .parent.full_name);
+            if [ -z $UPSTREAM ]; then echo "Can't find upstream" >&2 && exit 1; fi;
+        fi;
+        if [ ! $(echo $UPSTREAM | egrep '^(http|git@)') ]; then
+            UPSTREAM=https://github.com/$UPSTREAM.git
+        fi;
+        if [ ${{ inputs.depth || 100 }} -ne 0 ]; then
+            DEPTH=--depth=${{ inputs.depth || 100 }}
+        fi;
+
+        git remote add upstream $UPSTREAM;
+
+        git fetch upstream ${{ inputs.branch || 'master' }} $DEPTH;
+
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com";
+        git config --local user.name  "GitHub Actions";
+
+        git rebase upstream/${{ inputs.branch || 'master' }};
+
+        if [ "${{ inputs.push || true }}" = "true" -a "$(git status | grep diverged)" ]; then
+            ORIGIN_URL=$(git remote get-url origin);
+            git push "${ORIGIN_URL/https:\/\//https:\/\/$WORKFLOW_TOKEN@}" $(git branch --show-current) --force;
+        fi;
