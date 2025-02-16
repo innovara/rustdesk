@@ -1540,7 +1540,8 @@ bool option2bool(String option, String value) {
   } else if (option.startsWith("allow-") ||
       option == kOptionStopService ||
       option == kOptionDirectServer ||
-      option == kOptionForceAlwaysRelay) {
+      option == kOptionForceAlwaysRelay ||
+      option == kOptionAllowRemoteConfigModification) {
     res = value == "Y";
   } else {
     assert(false);
