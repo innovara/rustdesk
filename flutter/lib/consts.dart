@@ -106,8 +106,8 @@ const String kOptionEnableCamera = "enable-camera";
 const String kOptionEnableTunnel = "enable-tunnel";
 const String kOptionEnableRemoteRestart = "enable-remote-restart";
 const String kOptionEnableBlockInput = "enable-block-input";
-const String kOptionAllowRemoteConfigModification =
-    "allow-remote-config-modification";
+const String kOptionEnableRemoteConfigModification =
+    "enable-remote-config-modification";
 const String kOptionVerificationMethod = "verification-method";
 const String kOptionApproveMode = "approve-mode";
 const String kOptionAllowNumericOneTimePassword =
