@@ -600,14 +600,14 @@ class _GeneralState extends State<_General> {
       return support;
     }(), hasData: (data) {
       if (data is bool && data == true) {
-        bool value = mainGetBoolOptionSync(kOptionAllowRemoveWallpaper);
+        bool value = mainGetBoolOptionSync(kOptionEnableRemoveWallpaper);
         return Row(
           children: [
             Flexible(
               child: _OptionCheckBox(
                 context,
                 'Remove wallpaper during incoming sessions',
-                kOptionAllowRemoveWallpaper,
+                kOptionEnableRemoveWallpaper,
                 update: (bool v) {
                   setState(() {});
                 },

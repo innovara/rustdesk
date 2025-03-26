@@ -1755,8 +1755,8 @@ impl Connection {
         self.update_codec_on_login();
         #[cfg(any(target_os = "windows", target_os = "linux"))]
         if config::option2bool(
-            "allow-remove-wallpaper",
-            &Config::get_option("allow-remove-wallpaper"),
+            "enable-remove-wallpaper",
+            &Config::get_option("enable-remove-wallpaper"),
         ) {
             // multi connections set once
             let mut wallpaper = WALLPAPER_REMOVER.lock().unwrap();
