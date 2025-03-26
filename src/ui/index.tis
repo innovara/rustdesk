@@ -320,7 +320,7 @@ class MyIdMenu: Reactor.Component {
                 <li #enable-lan-discovery><span>{svg_checkmark}</span>{translate('Enable LAN discovery')}</li>
                 <AudioInputs />
                 <Enhancements />
-                <li #allow-remote-config-modification><span>{svg_checkmark}</span>{translate('Enable remote configuration modification')}</li>
+                <li #enable-remote-config-modification><span>{svg_checkmark}</span>{translate('Enable remote configuration modification')}</li>
                 <div .separator />
                 <li #custom-server>{translate('ID/Relay Server')}</li>
                 <li #whitelist title={translate('whitelist_tip')}>{translate('IP Whitelisting')}</li>
@@ -1212,7 +1212,7 @@ function self.onMouse(evt) {
 }
 
 function check_if_overlay() {
-    if (handler.get_option('allow-remote-config-modification') != 'Y') {
+    if (handler.get_option('enable-remote-config-modification') != 'Y') {
         var time0 = getTime();
         handler.check_mouse_time();
         self.timer(120ms, function() {
