@@ -3074,8 +3074,8 @@ Future<bool> canBeBlocked() async {
   // Check local settings
   var accessMode = await bind.mainGetOption(key: kOptionAccessMode);
   var isCustomAccessMode = accessMode != 'full' && accessMode != 'view';
-  var option = option2bool(kOptionAllowRemoteConfigModification,
-      await bind.mainGetOption(key: kOptionAllowRemoteConfigModification));
+  var option = option2bool(kOptionEnableRemoteConfigModification,
+      await bind.mainGetOption(key: kOptionEnableRemoteConfigModification));
   return accessMode == 'view' || (isCustomAccessMode && !option);
 }
 
