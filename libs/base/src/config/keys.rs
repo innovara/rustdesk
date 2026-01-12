@@ -50,7 +50,7 @@ pub const OPTION_ENABLE_PRIVACY_MODE: &str = "enable-privacy-mode";
 pub const OPTION_ENABLE_PERM_CHANGE_IN_ACCEPT_WINDOW: &str = "enable-perm-change-in-accept-window";
 pub const OPTION_ALLOW_SCOPE_VIOLATION_CLOSE: &str = "allow-scope-violation-close";
 pub const OPTION_ALLOW_SCOPE_VIOLATION_ALARM: &str = "allow-scope-violation-alarm";
-pub const OPTION_ALLOW_REMOTE_CONFIG_MODIFICATION: &str = "allow-remote-config-modification";
+pub const OPTION_ENABLE_REMOTE_CONFIG_MODIFICATION: &str = "enable-remote-config-modification";
 pub const OPTION_ENABLE_LAN_DISCOVERY: &str = "enable-lan-discovery";
 pub const OPTION_DIRECT_ACCESS_PORT: &str = "direct-access-port";
 pub const OPTION_WHITELIST: &str = "whitelist";
@@ -283,7 +283,7 @@ pub const KEYS_SETTINGS: &[&str] = &[
     OPTION_ENABLE_PRIVACY_MODE,
     OPTION_ALLOW_SCOPE_VIOLATION_CLOSE,
     OPTION_ALLOW_SCOPE_VIOLATION_ALARM,
-    OPTION_ALLOW_REMOTE_CONFIG_MODIFICATION,
+    OPTION_ENABLE_REMOTE_CONFIG_MODIFICATION,
     OPTION_ALLOW_NUMERNIC_ONE_TIME_PASSWORD,
     OPTION_ENABLE_LAN_DISCOVERY,
     OPTION_DIRECT_SERVER,
