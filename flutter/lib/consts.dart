@@ -128,8 +128,8 @@ const String kOptionEnablePermChangeInAcceptWindow =
     "enable-perm-change-in-accept-window";
 const String kOptionHideElevateButtonInAcceptWindow =
     "hide-elevate-button-in-accept-window";
-const String kOptionAllowRemoteConfigModification =
-    "allow-remote-config-modification";
+const String kOptionEnableRemoteConfigModification =
+    "enable-remote-config-modification";
 const String kOptionVerificationMethod = "verification-method";
 const String kOptionApproveMode = "approve-mode";
 const String kOptionAllowNumericOneTimePassword =
