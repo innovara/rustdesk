@@ -1067,7 +1067,7 @@ class _SafetyState extends State<_Safety> with AutomaticKeepAliveClientMixin {
                   context, 'Enable privacy mode', kOptionEnablePrivacyMode,
                   enabled: enabled, fakeValue: fakeValue),
             _OptionCheckBox(context, 'Enable remote configuration modification',
-                kOptionAllowRemoteConfigModification,
+                kOptionEnableRemoteConfigModification,
                 enabled: enabled, fakeValue: fakeValue),
           ],
         ),
