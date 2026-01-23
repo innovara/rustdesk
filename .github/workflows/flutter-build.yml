@@ -48,6 +48,7 @@ env:
   RS_PUB_KEY: "${{ secrets.RS_PUB_KEY }}"
   RENDEZVOUS_SERVER: "${{ secrets.RENDEZVOUS_SERVER }}"
   API_SERVER: "${{ secrets.API_SERVER }}"
+  VERSION_URL: "${{ secrets.VERSION_URL }}"
   UPLOAD_ARTIFACT: "${{ inputs.upload-artifact }}"
   SIGN_BASE_URL: "${{ secrets.SIGN_BASE_URL }}-2"
 
@@ -1427,6 +1428,8 @@ jobs:
           arch: ${{ matrix.job.arch }}
           distro: ${{ matrix.job.distro }}
           githubToken: ${{ github.token }}
+          env: |
+            VERSION_URL: ${{ secrets.VERSION_URL }}
           setup: |
             ls -l "${PWD}"
             ls -l /opt/artifacts/vcpkg/installed
@@ -1710,6 +1713,8 @@ jobs:
           arch: ${{ matrix.job.arch }}
           distro: ${{ matrix.job.distro }}
           githubToken: ${{ github.token }}
+          env: |
+            VERSION_URL: ${{ secrets.VERSION_URL }}
           setup: |
             ls -l "${PWD}"
           dockerRunArgs: |
