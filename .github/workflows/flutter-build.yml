@@ -1975,6 +1975,8 @@ jobs:
           arch: x86_64
           distro: ubuntu18.04
           githubToken: ${{ github.token }}
+          env: |
+            VERSION_URL: ${{ secrets.VERSION_URL }}
           setup: |
             ls -l "${PWD}"
             ls -l /opt/artifacts/vcpkg/installed
